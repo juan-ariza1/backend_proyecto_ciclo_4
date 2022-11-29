@@ -4,8 +4,6 @@
  */
 package com.app.movie.dto;
 
-import com.app.movie.entities.Client;
-
 /**
  *
  * @author Andres
