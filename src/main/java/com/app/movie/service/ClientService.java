@@ -5,7 +5,7 @@
 package com.app.movie.service;
 
 import com.app.movie.dto.ReportClientDto;
-import com.app.movie.entities.User;
+import com.app.movie.entities.Client;
 
 import com.app.movie.repository.ClientRepository;
 import java.util.Optional;
@@ -23,30 +23,30 @@ public class ClientService {
     @Autowired
     ClientRepository repository;
 
-    public Iterable<User> get() {
-        Iterable<User> response = repository.getAll();
+    public Iterable<Client> get() {
+        Iterable<Client> response = repository.getAll();
         return response;
     }
 
     public ReportClientDto getReport() {
-        Optional<User> client = repository.findById("6380442df71ad74770fc57e1");
+        Optional<Client> client = repository.findById("6380442df71ad74770fc57e1");
         ReportClientDto reportClientDto= new ReportClientDto();
         reportClientDto.birthDate=client.get().getBirthDate();
         reportClientDto.email=client.get().getEmail();
-        reportClientDto.id=client.get().getIdUser();
+        reportClientDto.id=client.get().getId();
         return reportClientDto;
     }
 
-    public User create(User request) {
+    public Client create(Client request) {
 
         return repository.save(request);
 
     }
 
-    public User update(User client) {
-        User clientToUpdate = new User();
+    public Client update(Client client) {
+        Client clientToUpdate = new Client();
 
-        Optional<User> currentClient = repository.findById(client.getIdUser());
+        Optional<Client> currentClient = repository.findById(client.getId());
         if (!currentClient.isEmpty()) {            
             clientToUpdate = client;
             clientToUpdate=repository.save(clientToUpdate);
