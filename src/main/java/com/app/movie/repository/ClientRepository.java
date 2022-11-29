@@ -4,7 +4,7 @@
  */
 package com.app.movie.repository;
 
-import com.app.movie.entities.User;
+import com.app.movie.entities.Client;
 import com.app.movie.interfaces.IClientRepository;
 
 import java.util.Optional;
@@ -21,12 +21,12 @@ public class ClientRepository {
     @Autowired
     IClientRepository repository;
     
-    public Iterable<User> getAll(){
+    public Iterable<Client> getAll(){
         return repository.findAll();
     }
     
-    public Optional<User> findById(String id){
-        Optional<User> response= repository.findById(id);
+    public Optional<Client> findById(String id){
+        Optional<Client> response= repository.findById(id);
         return response;
     }
     
@@ -38,7 +38,7 @@ public class ClientRepository {
         repository.deleteById(id);
     }
     
-    public User save(User client){
+    public Client save(Client client){
         return repository.save(client);
     }
     

@@ -4,13 +4,13 @@
  */
 package com.app.movie.interfaces;
 
-import com.app.movie.entities.User;
+import com.app.movie.entities.Client;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Andres
  */
-public interface IClientRepository extends CrudRepository<User, String> {
+public interface IClientRepository extends CrudRepository<Client, String> {
     
 }

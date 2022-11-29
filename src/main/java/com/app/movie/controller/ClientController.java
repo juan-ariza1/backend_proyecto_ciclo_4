@@ -6,7 +6,7 @@ package com.app.movie.controller;
 
 import com.app.movie.dto.ReportClientDto;
 import com.app.movie.service.ClientService;
-import com.app.movie.entities.User;
+import com.app.movie.entities.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,7 +33,7 @@ public class ClientController {
     ClientService service;
 
     @GetMapping("")
-    public Iterable<User> get() {
+    public Iterable<Client> get() {
         return service.get();
     }
 
@@ -44,13 +44,13 @@ public class ClientController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public User create(@RequestBody User request) {
+    public Client create(@RequestBody Client request) {
         return service.create(request);
     }
 
     @PutMapping("")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public User update(@RequestBody User request) {
+    public Client update(@RequestBody Client request) {
         return service.update(request);
     }
 
