@@ -20,22 +20,22 @@ import lombok.Setter;
  *
  * @author Andres
  */
-@Document("client")
+@Document("user")
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Client implements Serializable {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
-    private String id;
+    private String idUser;
     private String email;
     private String password;
     private String name;
     private String lastName;
     private String birthDate;
     private String phone;
-    
+    private String homePhone;
     //@OneToMany(cascade={CascadeType.PERSIST},mappedBy="messa<ge")
     //@JsonIgnoreProperties("message")
 //    @OneToMany(cascade={CascadeType.PERSIST},mappedBy="client")
