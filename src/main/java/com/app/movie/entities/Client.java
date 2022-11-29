@@ -35,7 +35,6 @@ public class Client implements Serializable {
     private String lastName;
     private String birthDate;
     private String phone;
-    private String homePhone;
     
     //@OneToMany(cascade={CascadeType.PERSIST},mappedBy="messa<ge")
     //@JsonIgnoreProperties("message")
