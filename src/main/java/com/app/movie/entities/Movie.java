@@ -30,6 +30,4 @@ public class Movie implements Serializable {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private String id;
     private String name;
-    
-    
 }
