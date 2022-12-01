@@ -13,10 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-/**
- *
- * @author Andres
- */
 @Service
 public class MovieService {
 
@@ -51,3 +47,4 @@ public class MovieService {
         return deleted;
     }
 }
+
