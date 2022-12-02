@@ -31,5 +31,10 @@ public class Movie implements Serializable {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private String id;
     private String name;
-    private List<Category> categoryList;
+    private String yearRelease;
+    private String duration;
+    private String genre;
+    private String synopsis;
+    private String ratingByAge;
+    private String score;
 }
