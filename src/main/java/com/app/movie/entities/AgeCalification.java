@@ -20,4 +20,7 @@ public class AgeCalification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String calification;
+
+
+
 }
