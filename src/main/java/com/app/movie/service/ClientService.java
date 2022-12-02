@@ -29,7 +29,7 @@ public class ClientService {
     }
 
     public ReportClientDto getReport() {
-        Optional<Client> client = repository.findById("6380442df71ad74770fc57e1");
+        Optional<Client> client = repository.findById("");  //6380442df71ad74770fc57e1
         ReportClientDto reportClientDto= new ReportClientDto();
         reportClientDto.birthDate=client.get().getBirthDate();
         reportClientDto.email=client.get().getEmail();

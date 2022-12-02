@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -36,5 +37,4 @@ public class Movie implements Serializable {
     private String synopsis;
     private String ratingByAge;
     private String score;
-
 }
