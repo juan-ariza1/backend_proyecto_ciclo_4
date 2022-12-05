@@ -1,5 +1,6 @@
 package com.app.movie.service;
 
+import com.app.movie.dto.ResponseDto;
 import com.app.movie.entities.Score;
 import com.app.movie.repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +19,24 @@ public class ScoreService {
         return response;
     }
 
-    public Score create(Score request) {
-        return repository.save(request);
+    public ResponseDto create(Score request) {
+        ResponseDto responseDto = new ResponseDto();
+        if (request.getStarsNumber().intValue() <= 1 || request.getStarsNumber().intValue() >= 5) {
+            responseDto.status = false;
+            responseDto.message = "Su puntuacion debe ser un numero de 1 y 5";
+        }else {
+            repository.save(request);
+            responseDto.status = true;
+            responseDto.message = "Su puntuacion se h guardado correctamente";
+            responseDto.id = request.getId();
+        }
+        return responseDto;
     }
-
     public Score update(Score score) {
         Score scoreToUpdate = new Score();
-
-        Optional<Score> currentScore = repository.findById(score.getId());
-        if (!currentScore.isEmpty()) {
+        if (repository.existsById(score.getId())) {
             scoreToUpdate = score;
-            scoreToUpdate = repository.save(scoreToUpdate);
+            repository.save(scoreToUpdate);
         }
         return scoreToUpdate;
     }
