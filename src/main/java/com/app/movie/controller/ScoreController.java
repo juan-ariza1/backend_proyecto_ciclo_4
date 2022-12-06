@@ -38,5 +38,4 @@ public class ScoreController {
         service.delete(id);
     }
 
-
 }

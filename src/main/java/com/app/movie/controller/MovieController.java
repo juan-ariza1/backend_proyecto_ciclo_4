@@ -33,7 +33,7 @@ public class MovieController {
 
     @PutMapping("")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Movie update(@RequestBody Movie request) {
+    public Movie update (@RequestBody Movie request) {
         return service.update(request);
     }
 
