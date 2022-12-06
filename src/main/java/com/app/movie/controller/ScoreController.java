@@ -22,7 +22,7 @@ public class ScoreController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseDto create(@RequestBody Score request) {
+    public ResponseDto create (@RequestBody Score request) {
         return service.create(request);
     }
 
