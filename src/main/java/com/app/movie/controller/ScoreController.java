@@ -1,5 +1,6 @@
 package com.app.movie.controller;
 
+import com.app.movie.dto.ResponseDto;
 import com.app.movie.entities.Score;
 import com.app.movie.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ScoreController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Score create(@RequestBody Score request) {
+    public ResponseDto create(@RequestBody Score request) {
         return service.create(request);
     }
 
