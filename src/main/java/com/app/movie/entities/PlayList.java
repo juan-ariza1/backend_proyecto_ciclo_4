@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.List;
 
 @Document("playlist")
 @Getter @Setter
@@ -21,4 +22,6 @@ public class PlayList implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String namePlayList;
+    //Listas
+    private List<Movie> movieList;
 }

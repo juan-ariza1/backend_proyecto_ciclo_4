@@ -28,13 +28,17 @@ import java.util.List;
 public class Movie implements Serializable {
 
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String name;
     private String yearRelease;
     private String duration;
-    private String genre;
     private String synopsis;
-    private String ratingByAge;
-    private String score;
+    private String ageCalification;
+    private String trailerLink;
+    //Listas
+    private List<Category> categoryList;
+    private List<Score> scoreList;
+
+
 }

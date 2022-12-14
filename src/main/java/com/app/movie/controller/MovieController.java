@@ -4,6 +4,7 @@
  */
 package com.app.movie.controller;
 
+import com.app.movie.dto.ResponseDto;
 import com.app.movie.entities.Client;
 import com.app.movie.entities.Movie;
 import com.app.movie.service.ClientService;
@@ -27,13 +28,13 @@ public class MovieController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public Movie create(@RequestBody Movie request) {
+    public ResponseDto create(@RequestBody Movie request) {
         return service.create(request);
     }
 
     @PutMapping("")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Movie update (@RequestBody Movie request) {
+    public Movie update(@RequestBody Movie request) {
         return service.update(request);
     }
 

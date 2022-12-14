@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.List;
 
 @Document("score")
 @Getter
@@ -21,4 +22,7 @@ public class Score implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private Integer starsNumber;
+    private String comment;
+    //Listas
+    private List<Client> clientList;
 }

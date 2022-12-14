@@ -12,7 +12,8 @@ public class ScoreRepository {
     @Autowired
     IScoreRepository repository;
 
-    public Iterable<Score> getAll() { return repository.findAll();
+    public Iterable<Score> getAll(){
+        return repository.findAll();
     }
 
     public Optional<Score> findById(String id){
@@ -20,15 +21,15 @@ public class ScoreRepository {
         return response;
     }
 
-    public Boolean existsById(String id) {
+    public Boolean existById(String id){
         return repository.existsById(id);
     }
 
-    public void deleteById(String id) { repository.deleteById(id);
+    public void deleteById(String id){
+        repository.deleteById(id);
     }
 
-    public Score save(Score score) {
+    public Score save(Score score){
         return repository.save(score);
     }
-
 }

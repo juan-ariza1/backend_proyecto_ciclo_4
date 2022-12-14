@@ -8,8 +8,11 @@ import com.app.movie.dto.ResponseDto;
 import com.app.movie.entities.Category;
 import com.app.movie.interfaces.ICategoryRepository;
 
+import com.app.movie.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  *
@@ -19,10 +22,10 @@ import org.springframework.stereotype.Service;
 public class CategoryService {
 
     @Autowired
-    ICategoryRepository repository;
+    CategoryRepository repository;
 
     public Iterable<Category> get() {
-        Iterable<Category> response = repository.findAll();
+        Iterable<Category> response = repository.getAll();
         return response;
     }
 
@@ -32,14 +35,15 @@ public class CategoryService {
 
         ResponseDto responseDto = new ResponseDto();
         responseDto.status=true;
-        responseDto.message="Categoría creada correctamente";
+        responseDto.message="Genero creado correctamente";
         responseDto.id= newCategory.getId();
         return responseDto;
-
     }
 
     public Category update(Category category) {
         Category categoryToUpdate = new Category();
+
+        Optional<Category> currentCategory = repository.findById(category.getId());
         if (repository.existsById(category.getId())) {
             categoryToUpdate = category;
             repository.save(categoryToUpdate);

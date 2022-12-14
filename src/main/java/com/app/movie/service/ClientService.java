@@ -5,9 +5,12 @@
 package com.app.movie.service;
 
 import com.app.movie.dto.ReportClientDto;
+import com.app.movie.dto.ResponseDto;
 import com.app.movie.entities.Client;
 
 import com.app.movie.repository.ClientRepository;
+
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClientService {
 
+    private final String CLIENT_REGISTERED = "El email ya se encuentra asociado a otra cuenta";
+    private final String CLIENT_SUCCESS = "Usuario registrado correctamente";
+
     @Autowired
     ClientRepository repository;
 
@@ -30,17 +36,26 @@ public class ClientService {
 
     public ReportClientDto getReport() {
         Optional<Client> client = repository.findById("");  //6380442df71ad74770fc57e1
-        ReportClientDto reportClientDto= new ReportClientDto();
+        ReportClientDto reportClientDto = new ReportClientDto();
         reportClientDto.birthDate=client.get().getBirthDate();
         reportClientDto.email=client.get().getEmail();
         reportClientDto.id=client.get().getId();
         return reportClientDto;
     }
 
-    public Client create(Client request) {
-
-        return repository.save(request);
-
+    public ResponseDto create(Client request) {
+        ResponseDto responseDto = new ResponseDto();
+        List<Client> emails = repository.getByEmail(request.getEmail());
+        if (emails.size()>0){
+            responseDto.status = false;
+            responseDto.message = CLIENT_REGISTERED;
+        }else {
+            repository.save(request);
+            responseDto.status = true;
+            responseDto.message = CLIENT_SUCCESS;
+            responseDto.id = request.getId();
+        }
+        return responseDto;
     }
 
     public Client update(Client client) {

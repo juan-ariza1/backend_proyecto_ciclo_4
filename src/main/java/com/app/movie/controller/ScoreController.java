@@ -11,31 +11,30 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/score")
 @CrossOrigin(origins = "*")
 public class ScoreController {
-
     @Autowired
     ScoreService service;
 
     @GetMapping("")
-    public Iterable<Score> get() {
-        return service.get();
+    public Iterable<Score> get(){
+        Iterable<Score> response = service.get();
+        return response;
     }
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseDto create (@RequestBody Score request) {
+    public ResponseDto create(@RequestBody Score request){
         return service.create(request);
     }
 
     @PutMapping("")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Score update(@RequestBody Score request) {
+    public Score update(@RequestBody Score request){
         return service.update(request);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") String id) {
+    public void delete(@PathVariable("id") String  id){
         service.delete(id);
     }
-
 }

@@ -5,12 +5,17 @@
 package com.app.movie.interfaces;
 
 import com.app.movie.entities.Client;
+import com.app.movie.entities.Movie;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
 
 /**
  *
  * @author Andres
  */
 public interface IClientRepository extends CrudRepository<Client, String> {
-    
+    @Query(value = "{email : ?0}")
+    List<Client> getClientsByEmail(String email);
 }

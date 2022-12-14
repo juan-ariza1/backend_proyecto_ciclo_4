@@ -6,6 +6,7 @@ package com.app.movie.entities;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,6 +36,9 @@ public class Client implements Serializable {
     private String lastName;
     private String birthDate;
     private String phone;
+    //Listas
+    private List<PlayList> playListList;
+
 
     
     //@OneToMany(cascade={CascadeType.PERSIST},mappedBy="messa<ge")
