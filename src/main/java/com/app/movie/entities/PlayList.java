@@ -22,6 +22,5 @@ public class PlayList implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     private String namePlayList;
-    //Listas
-    private List<Movie> movieList;
+    private Client client;
 }

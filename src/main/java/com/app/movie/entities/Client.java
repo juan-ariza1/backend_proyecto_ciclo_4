@@ -11,6 +11,8 @@ import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,13 +33,14 @@ public class Client implements Serializable {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private String id;
     private String email;
+    //@JsonIgnore
     private String password;
     private String name;
     private String lastName;
     private String birthDate;
     private String phone;
     //Listas
-    private List<PlayList> playListList;
+    //private List<PlayList> playListList;
 
 
     

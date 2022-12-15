@@ -1,6 +1,7 @@
 package com.app.movie.controller;
 
 import com.app.movie.dto.ResponseDto;
+import com.app.movie.dto.ScoreDto;
 import com.app.movie.entities.Score;
 import com.app.movie.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,26 +16,30 @@ public class ScoreController {
     ScoreService service;
 
     @GetMapping("")
-    public Iterable<Score> get(){
-        Iterable<Score> response = service.get();
-        return response;
+    public Iterable<Score> get() {
+        return service.get();
+    }
+
+    @GetMapping("/check/{movieId}")
+    public Score check(@PathVariable("movieId") String movieId,@RequestHeader(value="authorization") String authorization) {
+        return service.check(movieId,authorization);
     }
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseDto create(@RequestBody Score request){
-        return service.create(request);
+    public ResponseDto create(@RequestBody ScoreDto request,@RequestHeader(value="authorization") String authorization) {
+        return service.create(request,authorization);
     }
 
-    @PutMapping("")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Score update(@RequestBody Score request){
-        return service.update(request);
+    public ResponseDto update(@PathVariable("id") String id,@RequestBody Score request) {
+        return service.update(request,id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") String  id){
+    public void delete(@PathVariable("id") String id) {
         service.delete(id);
     }
 }

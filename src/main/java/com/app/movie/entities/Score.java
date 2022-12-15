@@ -21,8 +21,8 @@ public class Score implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-    private Integer starsNumber;
-    private String comment;
-    //Listas
-    private List<Client> clientList;
+    private Integer score;
+    private String state;
+    private Client client;
+    private Movie movie;
 }

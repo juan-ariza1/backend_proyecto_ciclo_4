@@ -21,6 +21,11 @@ public class ScoreRepository {
         return response;
     }
 
+    public Iterable<Score> findByMovieAndClient(String movieId,String clientId){
+        Iterable<Score> response= repository.getScoreByMovieAndClient(movieId,clientId);
+        return response;
+    }
+
     public Boolean existById(String id){
         return repository.existsById(id);
     }

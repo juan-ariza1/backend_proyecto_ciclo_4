@@ -30,19 +30,24 @@ public class MovieService {
         return response;
     }
 
+    public Optional<Movie> getById(String id) {
+        Optional<Movie> response = repository.findById(id);
+        return response;
+    }
+
     public ResponseDto create(Movie request) {
-        ResponseDto response = new ResponseDto();
+        ResponseDto responseDto = new ResponseDto();
         List<Movie> movies = repository.getByName(request.getName());
         if(movies.size()>0){
-            response.status=false;
-            response.message=MOVIE_REGISTERED;
+            responseDto.status=false;
+            responseDto.message=MOVIE_REGISTERED;
         }else {
             repository.save(request);
-            response.status=true;
-            response.message=MOVIE_SUCCESS;
-            response.id=request.getId();
+            responseDto.status=true;
+            responseDto.message=MOVIE_SUCCESS;
+            responseDto.id=request.getId();
         }
-        return response;
+        return responseDto;
     }
 
     public Movie update(Movie movie) {

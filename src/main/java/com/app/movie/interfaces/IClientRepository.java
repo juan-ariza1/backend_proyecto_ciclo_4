@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -18,4 +19,7 @@ import java.util.List;
 public interface IClientRepository extends CrudRepository<Client, String> {
     @Query(value = "{email : ?0}")
     List<Client> getClientsByEmail(String email);
+
+    @Query(value= "{email : ?0}")
+    Optional<Client> findByEmail(String email);
 }

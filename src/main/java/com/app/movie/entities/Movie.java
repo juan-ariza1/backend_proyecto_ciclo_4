@@ -36,9 +36,10 @@ public class Movie implements Serializable {
     private String synopsis;
     private String ageCalification;
     private String trailerLink;
+    private String imageLink;
     //Listas
-    private List<Category> categoryList;
-    private List<Score> scoreList;
+    private List<Category> categories;
+    //private List<Score> scoreList;
 
 
 }
