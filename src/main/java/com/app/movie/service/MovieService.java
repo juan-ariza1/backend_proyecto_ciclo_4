@@ -25,7 +25,7 @@ public class MovieService {
     @Autowired
     MovieRepository repository;
 
-    public Iterable<Movie> get() {
+    public Iterable<Movie> get(){
         Iterable<Movie> response = repository.getAll();
         return response;
     }
