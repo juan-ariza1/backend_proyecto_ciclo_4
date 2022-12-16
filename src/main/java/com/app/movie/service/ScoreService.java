@@ -11,6 +11,7 @@ import com.app.movie.repository.ScoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,12 +41,10 @@ public class ScoreService {
         Optional<Movie> movie = movieRepository.findById(movieId);
         Optional<Client> client = clientService.getByCredential(authorization);
         if(movie.isPresent() && client.isPresent()){
-            //Iterable<Score> scores = repository.findByMovieAndClient(movie.get().getId(),client.get().getId());
-            Optional<Score> scores= repository.findById(""); //6399cfadc9e9a77c999e8306
-            score = scores.get();
-            /*if(scores.size()>0){
+            List<Score> scores = repository.findByMovieAndClient(movie.get().getId(),client.get().getId());
+            if(scores.size()>0){
                 score = scores.get(scores.size()-1);
-            }*/
+            }
         }
 
         return score;

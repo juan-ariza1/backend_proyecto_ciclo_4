@@ -62,7 +62,6 @@ public class ClientService {
     }
 
     public ResponseDto create(Client request) {
-        //Primero se tiene que valida la contraseña
         ResponseDto responseDto = new ResponseDto();
         List<Client> emails = repository.getByEmail(request.getEmail());
         if (emails.size()>0){
